@@ -29,6 +29,16 @@ func newRequest(httpRequest *http.Request) *Request {
 	} // empty parameters, attributes
 }
 
+func NewRequest(httpRequest *http.Request,
+bodyContent *[]byte,
+pathParameters map[string]string, 
+attributes map[string]interface{}) *Request {
+	return &Request{
+		Request:        httpRequest,
+		pathParameters: pathParameters,
+		attributes:     attributes,
+	} // empty parameters, attributes
+}
 // PathParameter accesses the Path parameter value by its name
 func (r *Request) PathParameter(name string) string {
 	return r.pathParameters[name]
